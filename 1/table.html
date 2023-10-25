@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="insert()">insert</button>
+    <button onclick="del()">del</button>
+    <script>
+        let y = 1;
+        const tbl = document.createElement("table");
+        tbl.setAttribute("border", 1);
+        
+        const tbody = document.createElement("tbody")
+        tbl.appendChild(tbody);
+
+        for (; y <= 2; y++) {
+            const tr = document.createElement("tr");
+            for (let x = 1; x <= 2; x++) {
+                const td = document.createElement("td")
+                td.innerText = `(${y}, ${x})`;
+                tr.appendChild(td);
+            }
+            tbl.appendChild(tr);
+        }
+
+        document.body.appendChild(tbl);
+
+        function insert() {
+            const tr = document.createElement("tr");
+            for (let x = 1; x <= 2; x++) {
+                const td = document.createElement("td")
+                td.innerText = `(${y}, ${x})`;
+                tr.appendChild(td);
+            }
+            tbl.appendChild(tr);
+            y++;
+        }
+
+        function del() {
+           tbl.lastChild.remove()
+        }
+    </script>
+</body>
+
+</html>
