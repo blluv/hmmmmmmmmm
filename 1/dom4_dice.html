@@ -20,7 +20,7 @@
     </style>
     <script>
         function roll() {
-            dice.innerText = Math.random() * 10 | 0;
+            dice.innerText = ((Math.random() * 10 | 0) % 6) + 1;
         };
     </script>
 </head>
