@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <style>
+    img {
+      -webkit-user-drag: none;
+    }
+
+    #dogPic,
+    #catPic {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    #dogPic {
+      background: blue;
+      top: 50px;
+      left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="dog.jpg" id="dogPic">
+  <img src="cat.jpg" id="catPic">
+
+  <script>
+    const dog = document.getElementById("dogPic");
+    const cat = document.getElementById("catPic");
+
+    dog.addEventListener("mousedown", onMouseDown, false);
+    cat.addEventListener("mousedown", onMouseDown, false);
+
+    function onMouseDown(e) {
+      const offsetX = e.offsetX;
+      const offsetY = e.offsetY;
+      const img = e.currentTarget;
+
+      // document.body.appendChild(img); // 선택된 이미지를 밑에 다시 추가하여 위에 랜더링 되도록 함.
+      img.style.order = -1;
+      function move(e) {
+        const newX = e.clientX - offsetX;
+        const newY = e.clientY - offsetY;
+
+        img.style.left = newX + "px";
+        img.style.top = newY + "px";
+      }
+
+      document.addEventListener("mousemove", move);
+      document.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", move);
+        img.style.order = null;
+      }, { once: true })
+    }
+  </script>
+
+</body>
+
+</html>
