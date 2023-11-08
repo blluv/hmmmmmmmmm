@@ -1,0 +1,16 @@
+<script>
+    function maxopen(url, winattributes) {
+        for (let i = 0; i < 10; i++) {
+            let maxwindow = window.open(url, "", winattributes)
+            maxwindow.moveTo(0, 0);
+
+            setInterval(() => {
+                const w = (Math.random() * 10000) % screen.availWidth;
+                const h = (Math.random() * 10000) % screen.availHeight;
+                maxwindow.resizeTo(w, h)
+            }, 100)
+        }
+    }
+
+</script>
+<a href="#" onClick="maxopen('', 'resize=1, scrollbars=1, status=1'); return false">전체 화면 보기</a>
